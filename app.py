@@ -17,7 +17,7 @@ pairs         = data["pairs"]
 # Configurable constants
 TOP_K         = 5
 MIN_SCORE     = 0.2
-FALLBACK_REPLY = "Sorry, I didn’t get that."
+FALLBACK_REPLY = "Mmmm"
 
 # Clean text function (same as before)
 import re
