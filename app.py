@@ -66,7 +66,8 @@ def whatsapp_reply():
     reply_text = get_reply(incoming_msg)
     logging.info(f"Replying with: {reply_text}")
 
-    resp = MessagingResponse(reply_text)
+    resp = MessagingResponse()
+    resp.message(reply_text)
     return str(resp)
 
 
