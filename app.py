@@ -1,6 +1,7 @@
 import pickle
 import numpy as np
 import os
+import logging
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 from sklearn.metrics.pairwise import cosine_similarity
@@ -60,12 +61,14 @@ app = Flask(__name__)
 @app.route("/whatsapp", methods=["POST"])
 def whatsapp_reply():
     incoming_msg = request.form.get("Body", "").strip()
+    logging.info(f"Incoming message: {incoming_msg}")
+
     reply_text = get_reply(incoming_msg)
+    logging.info(f"Replying with: {reply_text}")
 
     resp = MessagingResponse()
-    resp.message(reply_text)
     return str(resp)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # default to 10000
-    app.run(host="0.0.0.0", port=port)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=False, threaded=True)
