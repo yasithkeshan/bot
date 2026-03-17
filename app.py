@@ -66,8 +66,11 @@ def whatsapp_reply():
     reply_text = get_reply(incoming_msg)
     logging.info(f"Replying with: {reply_text}")
 
-    resp = MessagingResponse()
+    resp = MessagingResponse(reply_text)
     return str(resp)
+
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
