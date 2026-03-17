@@ -2,3 +2,4 @@ flask
 twilio
 scikit-learn
 numpy
+gunicorn
